@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ccmtest-app
+  labels:
+    app: ccmtest
+spec:
+  containers:
+  - name: ccmtest
+    image: jshaw86/gocql_ccm_minikube:latest
+    env:
+    - name: CASSANDRA 
+      value: "192.168.33.1"
+    - name: KEYSPACE 
+      value: "blocks"
+    - name: PROTO_VERSION
+      value: "4"
+    - name: CQL_VERSION
+      value: "3.4.4"
+

@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: ccmtest-deployment
+  labels:
+    app: ccmtest
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ccmtest
+  template:
+    metadata:
+      labels:
+        app: ccmtest
+    spec:
+      containers:
+      - name: ccmtest
+        env:
+         - name: CASSANDRA 
+           value: "192.168.33.1"
+         - name: KEYSPACE 
+           value: blocks
+         - name: PROTO_VERSION
+           value: 4
+         - name: CQL_VERSION
+           value: "3.4.4"
+        image: jshaw86/gocql_ccm_minikube:latest
+        ports:
+        - containerPort: 80

@@ -1,0 +1,3 @@
+package: github.com/jshaw86/gocql_ccm_minikube
+import:
+- package: github.com/gocql/gocql
